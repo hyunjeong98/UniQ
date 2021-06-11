@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="utf-8" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="dao.UserDAO" %>
 <%
 	request.setCharacterEncoding("utf-8");
 
@@ -12,24 +13,17 @@
 	//String uemail = request.getParameter("univ_email");
 	
 	
-	String sql= "INSERT INTO quser(id, password, name, sex, univ, depart) VALUES (?,?,?,?,?,?)";
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "1111");
-	PreparedStatement stmt= conn.prepareStatement(sql);
-	stmt.setString(1, uid);
-	stmt.setString(2, upass);
-	stmt.setString(3, uname);
-	stmt.setString(4, usex);
-	stmt.setString(5, univename);
-	stmt.setString(6, univedepart);
-	//stmt.setString(7, uemail);
-	
-	int count = stmt.executeUpdate();
-	if(count == 1) {
-		out.print("회원가입이 완료 되었습니다.");
+	UserDAO dao= new UserDAO();
+	if(dao.exists(uid)) {
+		out.print("이미 가입한 회원입니다.");
+		return;
+	}
+	if(dao.insert( uid, upass, uname, usex, univename, univedepart)) {
+		out.print("회원가입이 완료되었습니다.");
+		response.sendRedirect("home.jsp");
 	}
 	else{
-		out.print("회원가입중 오류가 발생하었습니다.");
+		out.print("회원가입 처리중 오류가 발생하였습니다.");
 	}
-	stmt.close(); conn.close();
+	
 %>
