@@ -55,11 +55,56 @@ public class QuestDAO {
 		}
 	}
 	
+	public ArrayList<QuestObj> getListSearch(String keyword) throws NamingException, SQLException{
+		Connection conn= ConnectionPool.get();
+		PreparedStatement stmt= null;
+		ResultSet rs= null;
+		try{
+		String sql= "SELECT * FROM quest WHERE title LIKE ?";
+		stmt= conn.prepareStatement(sql);
+		stmt.setString(1, "%"+keyword+"%");
+		rs= stmt.executeQuery(); 
+		
+		ArrayList<QuestObj> quests = new ArrayList<QuestObj>();
+		while(rs.next()) {
+		quests.add(new QuestObj(rs.getString("title"), rs.getString("qexplain"), rs.getString("formlink"), rs.getInt("mchoice"), rs.getInt("sanswer"), rs.getString("deadline"), rs.getString("target"), rs.getInt("leadTime")));
+		}
+		return quests;
+		} finally{
+		if(rs!= null) rs.close();
+		if(stmt!= null) stmt.close();
+		if(conn!= null) conn.close();
+		}
+	}
+	
 	public String getDday(int year, int month, int day) {
 		LocalDate fromDate = LocalDate.now();
 		LocalDate toDate = LocalDate.of(year, month, day);
 		String Dday = Long.toString(ChronoUnit.DAYS.between(fromDate, toDate));
 		return Dday;
+	}
+	
+	public QuestObj getInfo(String title) throws NamingException, SQLException {
+		Connection conn= ConnectionPool.get();
+		PreparedStatement stmt= null;
+		ResultSet rs= null;
+		
+		try{
+			String sql= "SELECT * FROM quest WHERE title = ? ";
+			stmt= conn.prepareStatement(sql);
+			stmt.setString(1, title);
+			rs= stmt.executeQuery(); 
+			
+			QuestObj info = null;
+			if(rs.next()) {
+				info = new QuestObj(rs.getString("title"), rs.getString("qexplain"), rs.getString("formlink"), rs.getInt("mchoice"), rs.getInt("sanswer"), rs.getString("deadline"), rs.getString("target"), rs.getInt("leadTime"));
+			}
+			return info;
+			} finally{
+			if(rs!= null) rs.close();
+			if(stmt!= null) stmt.close();
+			if(conn!= null) conn.close();
+			}
 	}
 	
 }

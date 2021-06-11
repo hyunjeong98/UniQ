@@ -7,9 +7,9 @@
 <%@ page import="java.time.Period" %>
 <%@ page import="java.time.temporal.ChronoUnit" %>
 
-<%	
-	
-	ArrayList<QuestObj> quests = (new QuestDAO()).getList();
+<%
+	String keyword = request.getParameter("keyword");
+	ArrayList<QuestObj> quests = (new QuestDAO()).getListSearch(keyword);
 	String id = (String) session.getAttribute("id"); 
 	UserObj user = (new UserDAO()).getUserInfo(id);
 	String univ = user.getUniv();
@@ -36,12 +36,12 @@
 		<a href = "register.html"><img src="../images/add.png"></a>
 	</div>
 
-	<form action="surveyListSearch.jsp" method="get" accept-charset="utf-8" id="frm">
+	<form action="surveyListSearch.jsp" method="get" accept-charset="utf-8">
 		<div class="surveylist__form">
 				<table class="list_table">
 					<tr>
 						<td class="list_sort">
-							<select name="sort">
+							<select name="job">
 								<option value="time_asc">최신순</option>
 								<option value="time_desc">오래된순</option>
 								<option value="spell_asc">가나다순</option>
@@ -51,7 +51,7 @@
 						</td>
 						<td class="list_search">
 							<input type="text" name="keyword" placeholder="검색어를 입력해주세요.">
-							<button onclick="document.getElementById('frm').submit();"><img src="../images/search.png"></button>
+							<button type='submit'><img src="../images/search.png"></button>
 						</td>
 					</tr>
 				</table>
@@ -126,9 +126,6 @@
 </html>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
-	
-
-
 	$(document).ready(function () {
 		$('.tr').click(function(){
 			var title = $(this).children(".Questionlist__title").text();
