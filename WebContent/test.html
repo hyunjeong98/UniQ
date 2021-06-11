@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<embed>
+    <!-- HOME -->
+    <div class="home__title">
+        <h1 class="home__title__text">홈</h1>
+    </div>
+    <button onclick="moveGoogleform()"></button>
+    <script> 
+    function moveGoogleform(){
+    location.href='intent://docs.google.com/forms#Intent;scheme=http;package=com.android.chrome;end' 
+    }
+    </script>
+    
+    <div class="bar">
+        
+        <div class="bar__container">
+            
+            <a href="home.html" class="bar__home">
+                <img src="icon_home.png" alt="home icon" class="bar__home__icon">
+            </a>
+            <a href="mysurvey.html" class="bar__mysurvey">
+                <img src="icon_mysurvey.png" alt="mysurvey icon" class="bar__mysurvey__icon">
+            </a>
+            <a href="pointshop.html" class="bar__pointshop">
+                <img src="icon_pointshop.png" alt="pointshop icon" class="bar__pointshop__icon">
+            </a>
+            <a href="settings.html" class="settings">
+                <img src="icon_settings.png" alt="settings icon" class="bar__settings__icon">
+            </a>
+        </div>
+    </div>
+</body>
+</html>

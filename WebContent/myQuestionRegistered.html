@@ -1,0 +1,133 @@
+
+<!--
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<title>내가 등록한 설문</title>
+</head>
+<body>
+	<header>
+		<div class="registeredQuestion__title">
+			<a href="myQuestion.html"><img class="leftarrow" src="images/left-arrow.png"></a>
+			<span class="register__title__text">등록한 설문 리스트</span>
+			<span id="hide">&lt;</span>
+		</div>
+	</header>
+
+
+	<div class="surveylist__form">
+		
+		<table class="list_table">
+			<tr>
+				<td class="list_sort">
+					<select name="job">
+						<option value="time_asc">최신순</option>
+						<option value="time_desc">오래된순</option>
+						<option value="spell_asc">가나다순</option>
+						<option value="campus">교내</option>
+						<option value="nation">전국</option>
+					</select>
+				</td>
+				<td class="list_search">
+					<input type="text" placeholder="검색어를 입력해주세요.">
+					<button onclick=""><img src="images/search.png"></button>
+				</td>
+			</tr>
+		</table>
+	
+</div>
+
+	<section>
+	<!--
+		<%
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mysns?allowMultiQueries=true", "root", "1111");
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("select range, title, deadline from myquest");
+		int pageSize=6;
+		String str = "<table><tr><td>";
+		while(rs.next()){
+		%>
+		
+		<input type="button" onclick="location.href='intent://구글 폼 결과 화면url#Intent;scheme=http;package=com.android.chrome;end'" value="<%=rs.getString("range")%> <%=rs.getString("title")%> <%=rs.getString("deadline")%>">
+		<%
+		str += "</td></tr>";
+		}
+		str += "</table>";
+		out.print(str);
+		%>
+		
+		<%
+		rs.close(); stmt.close(); conn.close();
+		%>
+	-->
+	</section>
+
+	<table class="Questionlist">
+		<tr>
+			<td class="Questionlist__target"><span>[전국]</span><input type="checkbox" name="target" value="db에서 가져오기"></td>
+			<td class="Questionlist__title" onclick="location.href='myQuestOutline.html'">도서관 이용 관련 설문</td>
+			<td class="Questionlist__dday" onclick="location.href='myQuestOutline.html'">D - 1</td>
+		</tr>
+		<tr>
+			<td class="Questionlist__target" ><span>[전국]</span><input type="checkbox" name="target" value="db에서 가져오기"></td>
+			<td class="Questionlist__title" onclick="location.href='myQuestOutline.html'">도서관 이용 관련 설문</td>
+			<td class="Questionlist__dday" onclick="location.href='myQuestOutline.html'">D - 1</td>
+		</tr>
+		
+	</table>
+
+	<div class="registeredQuestion__buttons">
+		<input type="button" class="registeredQuestion__edit" value="편집">
+	</div>
+	<div class="registeredQuestion__buttons-none">
+		<input type="button" class="registeredQuestion__delete" value="삭제">
+		<input type="button" class="registeredQuestion__complete" value="완료">
+	</div>
+	<footer>
+		<div class="bar">
+			<div class="bar__container">
+				<a href="home.html" class="bar__home">
+					<img src="images/icon_home.png" alt="home icon" class="bar__home__icon">
+				</a>
+				<a href="mysurvey.html" class="bar__mysurvey">
+					<img src="images/icon_mysurvey.png" alt="mysurvey icon" class="bar__mysurvey__icon">
+				</a>
+				<a href="pointShop.html" class="bar__pointshop">
+					<img src="images/icon_pointshop.png" alt="pointshop icon" class="bar__pointshop__icon">
+				</a>
+				<a href="settings.html" class="settings">
+					<img src="images/icon_settings.png" alt="settings icon" class="bar__settings__icon">
+				</a>
+			</div>
+		</div>
+   	</footer>
+</body>
+</html>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(document).ready(function () {
+		$(".registeredQuestion__edit").click(function (){
+			$(".registeredQuestion__buttons").css({"display": "none"});
+			$(".registeredQuestion__buttons-none").css("display","flex");
+			$("td > span").css({"display": "none"});
+			$("td > input[type='checkbox']").css("display","block");
+		});
+
+		$(".registeredQuestion__complete").click(function(){
+			$(".registeredQuestion__buttons-none").css('display','none');
+			$(".registeredQuestion__buttons").css("display","flex");
+			$("td > input[type='checkbox']").css({"display": "none"});
+			$("td > span").css("display","block");
+		})
+
+
+	});
+</script>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>survey registration</title>
+    <link rel="stylesheet" href="style.css">    
+    <script src="https://kit.fontawesome.com/42105adea0.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="register__title">
+        <a href="home.html"><img class="leftarrow" src="images/left-arrow.png"></a>
+        <span class="register__title__text">설문 등록</span>
+        <span id="hide">&lt;</span>
+    </div>
+    <div class="surveyInfo">
+        <form action="register.jsp" method="post">
+            <div class="surveyInfo__text">
+                <input class="margintop32" type="text" name="surveyTitle" placeholder="설문 제목"/><br>
+                <textarea class="margintop32" name="surveyExplanation" cols="50" rows="1" placeholder="설문지 설명" onkeydown="resize(this)" onkeyup="resize(this)"></textarea><br>
+                <input class="margintop32" type="text" name="surveyLink" placeholder="구글 폼 URL"/>                <br>
+            </div>
+            <div class="surveyInfo__link">
+                &nbsp;만든 구글 폼이 없으신가요? <input type="button" onclick="moveGoogleform()" value="구글 폼 만들기"></input>
+            </div>
+            <div class="surveyInfo__questions">
+                <input class="margintop32" type="number" name="surveyQuestions__choice" min="0" placeholder="객관식 문항 수"/><br>
+                <input class="margintop32" type="number" name="surveyQuestions__shortanswer" min="0" placeholder="주관식 문항 수"/>
+                <input class="margintop32" type="number" name="surveyQuestions__leadtime" min="0" placeholder="예상 소요 시간 (분)"/>
+            </div>
+            <div class="surveyInfo__endDay margintop32">
+                설문 마감기한&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="date" id="currentDate" name="endDay"/>
+            </div>
+            <div class="surveyInfo__target margintop32">
+                설문 대상
+                <label><input type="radio" name="surveyTarget" value="campus" checked/> 교내</label>
+                <label><input type="radio" name="surveyTarget" value="nation" /> 전국</label>
+            </div>
+            <div class="vh8"></div>
+            <div class="surveyInfo__buttons-container">
+                <div class="surveyInfo__buttons">
+                    <input type="reset" value="초기화">
+                    <input type="submit" value="등록하기">
+                </div>
+            </div>     
+        </form>
+    </div>
+    
+
+</body> 
+</html>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    
+
+document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
+
+function moveGoogleform(){
+    location.href='intent://docs.google.com/forms#Intent;scheme=http;package=com.android.chrome;end';
+    }
+
+function resize(obj) {
+    obj.style.height = "1px";
+    obj.style.height = (12 + obj.scrollHeight) + "px";
+}
+
+</script>

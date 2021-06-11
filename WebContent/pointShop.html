@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<title>포인트샵</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="pointshop__title">
+        <h1 class="pointshop__title__text">포인트샵</h1>
+    </div>
+
+    <hr class="lightLine">
+
+	<section class="pointshop">
+		<div class="background"></div>
+		<div class="modal_wrap1">
+			<div class="modal_message">
+				설문 등록 티켓 5장을<br>
+				구매하시겠습니까?<br>
+				<br>
+				보유 포인트 : 100p
+			</div>
+			<a href="pointshop1.jsp"><button class="modal_buy">구매</button></a>
+			<button class="modal_cancel1">취소</button>
+		</div>
+		<div class="modal_wrap2">
+			<div class="modal_message">
+				설문 등록 티켓 10장을<br>
+				구매하시겠습니까?<br>
+				<br>
+				보유 포인트 : 100p
+			</div>
+			<a href="pointshop2.jsp"><button class="modal_buy">구매</button></a>
+			<button class="modal_cancel2">취소</button>
+		</div>
+		<table>
+			<tr>
+				<td rowspan="3"><img class="pointshop__ticketimg" src="images/ticket.png"></td>
+				<td rowspan="3" id="qty1">X5</td>
+				<td id="pointshop__td-right">설문 등록 티켓 5장</td>
+			</tr>
+			<tr>
+				<td id="pointshop__td-right">5p</td>
+			</tr>
+			<tr>
+				<td id="pointshop__td-right"><button id="pointshop__button1">구매</button></td>
+			</tr>
+		</table>
+		<hr class="pointshop__line">
+	
+		<table>
+			<tr>
+				<td rowspan="3"><img class="pointshop__ticketimg" src="images/ticket.png"></td>
+				<td rowspan="3" id="qty2">X10</td>
+				<td id="pointshop__td-right">설문 등록 티켓 10장</td>
+			</tr>
+			<tr>
+				<td id="pointshop__td-right">10p</td>
+			</tr>
+			<tr>
+				<td id="pointshop__td-right"><button id="pointshop__button2">구매</button></td>
+			</tr>
+		</table>
+	</section>
+
+	<footer>
+		<div class="bar">
+			<div class="bar__container">
+				<a href="home.html" class="bar__home">
+					<img src="images/icon_home.png" alt="home icon" class="bar__home__icon">
+				</a>
+				<a href="myQuestion.html" class="bar__mysurvey">
+					<img src="images/icon_mysurvey.png" alt="mysurvey icon" class="bar__mysurvey__icon">
+				</a>
+				<a href="pointShop.html" class="bar__pointshop">
+					<img src="images/icon_pointshop.png" alt="pointshop icon" class="bar__pointshop__icon">
+				</a>
+				<a href="settings.html" class="settings">
+					<img src="images/icon_settings.png" alt="settings icon" class="bar__settings__icon">
+				</a>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
+<script>
+	window.onload = function() {
+
+		function onClick1() {
+			document.querySelector('.modal_wrap1').style.display = 'block';
+			document.querySelector('.background').style.display = 'block';
+		}
+
+		function onClick2() {
+			document.querySelector('.modal_wrap2').style.display = 'block';
+			document.querySelector('.background').style.display = 'block';
+		}
+
+		function offClick1() {
+			document.querySelector('.modal_wrap1').style.display = 'none';
+			document.querySelector('.background').style.display = 'none';
+		}
+
+		function offClick2() {
+			document.querySelector('.modal_wrap2').style.display = 'none';
+			document.querySelector('.background').style.display = 'none';
+		}
+
+		document.getElementById('pointshop__button1').addEventListener('click', onClick1);
+		document.querySelector('.modal_cancel1').addEventListener('click', offClick1);
+		document.getElementById('pointshop__button2').addEventListener('click', onClick2);
+		document.querySelector('.modal_cancel2').addEventListener('click', offClick2);
+	};
+</script>

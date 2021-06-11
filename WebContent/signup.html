@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <form method="post" action="jsp/signup.jsp">
+        <!-- header -->
+        <div class="signup__title">
+            <h1>회원가입</h1>
+        </div>
+        
+
+        <!-- wrapper -->
+        <div class="signup__wrapper">
+            <!-- 개인정보 -->
+            <h2>개인정보</h2>
+            <div class="signup__personalInfo">
+                <!-- ID -->
+                <div class="perosonalInfo__id">
+                    <input type="text" id="id" name="id" maxlength="20" placeholder="아이디">
+                    <!--아이디값을 잘못 입력했을 때, 입력 폼 아래에 에러 메세지가 표시될 부분-->
+                    <div class="id_errorbox"></div>
+                </div>
+                <br>
+
+                <!-- PW1 -->
+                <div class="perosonalInfo__pw1">
+                    <input type="password" id="pswd1" name="pswd1" maxlength="20" placeholder="비밀번호">
+                    <!--조건에 맞지 않는 비밀번호 설정 시-->
+                    <div class="pw1_errorbox"></div>
+                    <!--<img src="이미지 파일" id="pswd1_img1" class="pswdImg">-->
+                </div>
+                <br>
+
+                <!-- PW2 -->
+                <div class="perosonalInfo__pw2">
+                    <input type="password" id="pswd2" maxlength="20" placeholder="비밀번호 재확인">
+                    <!--<img src="이미지 파일" id="pswd2_img1" class="pswdImg">-->
+                    <div class="pw2_errorbox"></div>
+                </div>
+                <br>
+
+                <!-- NAME -->
+                <div class="perosonalInfo__name">
+                    <input type="text" id="name" name="name" class="int" maxlength="20" placeholder="이름">
+                    <div class="name_errorbox"></div>
+                </div>
+                <br>
+
+               
+
+                <!-- GENDER -->
+                <div class="perosonalInfo__gender">
+                    성별&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label><input type="radio" name="gender" checked="checked" value="male"/> 남</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" name="gender" value="female"/>여</label>
+                </div>
+                <br>
+            </div>
+            
+            <!-- 학교정보 -->
+            <h2>학교정보</h2>
+            <div class="signup__univInfo">
+                
+            
+                <!-- UNIV-->
+                <div class="univInfo__name">
+                    <input type="text" id="univ_name" name="univ_name" maxlength="16" placeholder="학교">
+                    <!--특수문자 등 다른 문자가 들어갔을 경우-->
+                    <br><span class="univname_errorbox"></span>
+                </div>
+                <br>
+            
+                <!-- DEPARTMENT -->
+                <div class="univInfo__department">
+                    <input type="text" id="univ_department" name="univ_department" maxlength="16" placeholder="학부/학과">
+                    <!--특수문자 등 다른 문자가 들어갔을 경우-->
+                    <br><span class="department_errorbox"></span>
+                </div>
+                <br>
+            
+                <!-- EMAIL -->
+                <div class="univInfo__email">
+                    <input type="text" id="univ_email" name="univ_email" class="uemail" maxlength="100" placeholder="학교 이메일">
+                    &nbsp;<input type="button" value="인증 요청" onclick="" />
+                    <!--형식에 맞지 않을 경우-->
+                    <br><span class="email_errorbox"></span>
+                </div>
+                <br>
+            
+                <!-- CONFIRM_NUMBER -->
+                <div class="univInfo__confirmNo">
+                    <input type="text" id="univ_confirmNo" name="univ_confirmNo" class="con_no" maxlength="20" placeholder="인증 번호">
+                    <!--인증 번호가 다를 경우-->
+                    <br><span class="confirm_errorbox"></span>
+                </div>
+                <br>
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="signup__buttons">
+                <input type="reset" value="취소"/>
+                <input type="submit" value="회원가입"/>
+                <!--  <input type="button" value="회원가입" onclick="signup()"/> -->
+            </div>
+        </div>
+
+        
+    </form>
+</body>
+
+</html>
+<!-- 
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    function signup(){
+        var id = $("#id").val().trim();
+        if (id == "") {
+            $("#id_errorbox").append("아이디를 입력해주세요");
+            $("#id").focus();
+            return;
+        }
+        if (id != ""){
+            $("#id_errorbox").empty();
+        }
+        
+        var pw1 = $("#pw1").val().trim();
+        if(pw1 == "") {
+            $("#pw1_errorbox").append("비밀번호를 입력해주세요");
+            $("#pw1").focus();
+            return;
+        }
+        if (pw1 != ""){
+            $("#pw1_errorbox").empty();
+        }
+
+        var pw2 = $("#pw2").val().trim();
+        if(pw2 == "") {
+            $("#pw2_errorbox").append("비밀번호를 한 번 더 입력해주세요");
+            $("#pw2").focus();
+            return;
+        }
+        if (pw2 != ""){
+            $("#pw2_errorbox").empty();
+        }
+
+        if(pw1 != pw2) {
+            $("#pw2_errorbox").append("비밀번호를 확인해주세요");
+            $("#pw2").focus();
+            return;
+        }
+        if (pw1 == pw2){
+            $("#pw2_errorbox").empty();
+        }
+
+        var name = $("#name").val().trim();
+        if(name == "") {
+            $("#name_errorbox").append("이름을 입력해주세요");
+            $("#name").focus();
+            return;
+        }
+        if (name != ""){
+            $("#name_errorbox").empty();
+        }
+
+        var univ_name = $("#univ_name").val().trim();
+        if(univ_name == "") {
+            $("#univname_errorbox").append("학교 이름을 입력해주세요");
+            $("#univ_name").focus();
+            return;
+        }
+        if (univ_name != ""){
+            $("#univname_errorbox").empty();
+        }
+
+        var univ_department = $("#univ_department").val().trim();
+        if(univ_department == "") {
+            $("#department_errorbox").append("학부/학과를 입력해주세요");
+            $("#univ_department").focus();
+            return;
+        }
+        if (univ_department != ""){
+            $(".department_errorbox").empty();
+        }
+        
+        var univ_email = $("#univ_email").val().trim();
+        if(univ_email == "") {
+            $(".email_errorbox").append("학교 이메일을 입력해주세요");
+            $("#univ_email").focus();
+            return;
+        }
+        var emailArr = univ_email.split("@");
+        var domainArr = emailArr[1].split(".");
+        
+        
+        if(domainArr[0] != "ac" && domainArr[0] != "edu"){
+        	$(".email_errorbox").append("학교 이메일로만 인증이 가능합니다.");
+            $("#univ_email").focus();
+            return;
+        }
+        if (univ_email != ""){
+            $(".email_errorbox").empty();
+        }
+
+        /* 인증 구현 필요 */
+
+        var url="jsp/signup.jsp?id="+ id + "&ps="+ ps + "&name=" + name;
+	    AJAX.call(url, null, function(data) {
+		var code = data.trim();
+		if(code == "NA") {
+			alert("이미 가입한 회원입니다.");
+		}
+		else if(code == "OK") {
+			alert("회원 가입이 완료되었습니다.");
+		}
+		else if(code == "ER"){
+			alert("회원 가입 중 오류가 발생하였습니다.");
+		}
+	});
+    }
+</script>
+
+ -->

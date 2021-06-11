@@ -1,0 +1,145 @@
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<title>내 설문</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://kit.fontawesome.com/42105adea0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<header>
+		<div class="myQuestion__title">
+			<h1 class="myQuestion__title__text">내 설문</h1>
+		</div>
+		<hr class="lightLine">
+	</header>
+	<section class="myQuestion"><!--section은 slq의 데이터베이스 불러오기.-->
+		<div>
+			<a href="myQuestionRegistered.html">
+				<div class="myQuestion__container">
+					<span>내가 등록한 설문</span>
+					<span class="icon"><i class="fas fa-chevron-right"></i></span>
+				</div>
+			</a>
+		</div>
+		<div class="myQuestion__table">
+			<!-- sql 에서 불러와야 함-->
+			<div class="myQuestion__table__td">
+				<span class="target">[전국]</span>
+				<span class="title">도서관 이용 관련 설문</span>
+				<span class="dday">D - 1</span>
+			</div>
+
+			<div class="myQuestion__table__td">
+				<span class="target">[전국]</span>
+				<span class="title">도서관 이용 관련 설문</span>
+				<span class="dday">D - 1</span>
+			</div>
+
+			<div class="myQuestion__table__td">
+				<span class="target">[전국]</span>
+				<span class="title">도서관 이용 관련 설문</span>
+				<span class="dday">D - 1</span>
+			</div>
+			
+		</div>
+		
+		<!--
+      	<%
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mysns?allowMultiQueries=true", "root", "1111");
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("select range, title, deadline from myquest");
+		String str = "<table><tr><td>";
+		while(rs.next()){
+		%>
+		<input type="button" onclick="location.href='구글 폼 결과 화면url#Intent;scheme=http;package=com.android.chrome;end'" value="<%=rs.getString("range")%> <%=rs.getString("title")%> <%=rs.getString("deadline")%>">
+		<%
+		str += "</td></tr>";
+		}
+		str += "</table>";
+		out.print(str);
+		rs.close(); stmt.close(); 
+		%>
+		-->
+	</section>
+	<hr class="lightLine">
+	<section class="myQuestion">
+		<div>
+			<a href="myQuestionJoined.html">
+				<div class="myQuestion__container">
+					<span>내가 참여한 설문</span>
+					<span class="icon"><i class="fas fa-chevron-right"></i></span>
+				</div>
+			</a>
+		</div>
+
+		<div class="myQuestion__table">
+			<!-- sql 에서 불러와야 함-->
+			<div class="myQuestion__table__td">
+				<span class="target">[전국]</span>
+				<span class="title">도서관 이용 관련 설문</span>
+				<span class="dday">D - 1</span>
+			</div>
+
+			<div class="myQuestion__table__td">
+				<span class="target">[전국]</span>
+				<span class="title">도서관 이용 관련 설문</span>
+				<span class="dday">D - 1</span>
+			</div>
+
+			<div class="myQuestion__table__td">
+				<span class="target">[전국]</span>
+				<span class="title">도서관 이용 관련 설문</span>
+				<span class="dday">D - 1</span>
+			</div>
+			
+		</div>
+
+		<!--
+		<%
+		Statement stmt1 = conn.createStatement();
+		ResultSet rs1 = stmt1.executeQuery("select range, title, deadline from joinedquest");
+		String str1 = "<table><tr><td>";
+		while(rs1.next()){
+		%>
+		<input type="button" onclick="location.href='참여한 설문지를 클릭하면 어디로 가게 해야할까?'" value="<%=rs1.getString("range")%> <%=rs1.getString("title")%> <%=rs1.getString("deadline")%>">
+		<%
+		str1 += "</td></tr>";
+		}
+		str1 += "</table>";
+		out.print(str1);
+		rs1.close(); stmt1.close();
+		conn.close();
+		%>
+		-->
+	</section>
+
+	<div class="empty"></div>
+  	<footer>
+		<div class="bar">
+		
+			<div class="bar__container">
+		
+				<a href="home.html" class="bar__home">
+					<img src="images/icon_home.png" alt="home icon" class="bar__home__icon">
+				</a>
+				<a href="myQuestion.html" class="bar__mysurvey">
+					<img src="images/icon_mysurvey.png" alt="mysurvey icon" class="bar__mysurvey__icon">
+				</a>
+				<a href="pointShop.html" class="bar__pointshop">
+					<img src="images/icon_pointshop.png" alt="pointshop icon" class="bar__pointshop__icon">
+				</a>
+				<a href="settings.html" class="settings">
+					<img src="images/icon_settings.png" alt="settings icon" class="bar__settings__icon">
+				</a>
+			</div>
+		</div>
+   	</footer>
+</body>
+</html>

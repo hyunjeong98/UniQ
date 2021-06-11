@@ -1,0 +1,88 @@
+
+<!--
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css"> 
+	<title>설문 정보</title>
+</head>
+<body>
+	<div class="outline__title">
+		<a href="myQuestionRegistered.html"><img class="leftarrow" src="images/left-arrow.png"></a>
+        <span class="register__title__text">설문 정보</span>
+        <span id="hide">&lt;</span>
+	</div>
+	<div class="outline__container">
+		<section class="sec1">
+			<h3>[<%= request.getParameter("quest_range") %>]&nbsp;<%= request.getParameter("quest_title") %>
+			</h3>
+			<p>
+				<%= request.getParameter("quest_explain") %>
+			</p>
+			<p class="deadline">
+				<%= request.getParameter("deadline") %>
+			</p>
+		</section>
+		<hr class="boldline">
+		<section class="sec2">
+			<div>
+				<h3>문항수</h3>
+				<p>총 <%= request.getParameter("tot_quest") %>문항</p>
+				<p>객관식 : <%= request.getParameter("choice_quest") %>문항</p>
+				<p>주관식 : <%= request.getParameter("shortAnswer_quest") %>문항</p>
+			</div>
+		
+			<div>
+				<h3>소요 시간</h3>
+				<p>
+					<%= request.getParameter("leadTime") %> 분
+				</p>
+			</div>
+		
+			<div>
+				<h3>적립 예정 포인트</h3>
+				<p>
+					<%= request.getParameter("point") %> p
+				</p>
+			</div>
+		</section>
+		
+	</div>
+	<div class="buttoncontainer">
+		<div class="myoutline__buttons">
+			<button class="outline__buttons__back" onclick="location.href='myQuestionRegistered.html'">돌아가기</button>
+			<button class="outline__buttons__result" onclick="goResult()">설문결과</button>
+			<button class="outline__buttons__close" onclick="close()">조기마감</button>
+		</div>
+	</div>
+	
+	<footer>
+		<div class="bar">
+			<div class="bar__container">
+				<a href="home.html" class="bar__home">
+					<img src="images/icon_home.png" alt="home icon" class="bar__home__icon">
+				</a>
+				<a href="mysurvey.html" class="bar__mysurvey">
+					<img src="images/icon_mysurvey.png" alt="mysurvey icon" class="bar__mysurvey__icon">
+				</a>
+				<a href="pointShop.html" class="bar__pointshop">
+					<img src="images/icon_pointshop.png" alt="pointshop icon" class="bar__pointshop__icon">
+				</a>
+				<a href="settings.html" class="settings">
+					<img src="images/icon_settings.png" alt="settings icon" class="bar__settings__icon">
+				</a>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
+
+<script type="text/javascript">
+	function goResult() { 
+		location.href = "<%= request.getParameter("quest_url") %>"; 
+		}
+</script>

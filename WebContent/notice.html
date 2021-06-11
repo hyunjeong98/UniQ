@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>설정</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="outline__title">
+		<a href="settings.html"><img class="leftarrow" src="images/left-arrow.png"></a>
+        <span class="adminQuestion__title__text" style="color: #001d85;">공지사항</span>
+        <span id="hide">&lt;</span>
+	</div>
+    <div class="notice__container">
+        <table class="notice__container__table">
+            <!--테이블 내용 부분-->
+            <tbody>
+                <tr onclick="location.href='noticeView.jsp'">
+                    <td>2021-06-07</td>
+                    <td class="article">21/06/07 업데이트 안내</td>
+                    
+                </tr>
+                <tr onclick="location.href='noticeView.jsp'">
+                    <td>2021-06-05</td>
+                    <td class="article">21/06/05 업데이트 안내</td>
+                    
+                </tr>
+                <tr onclick="location.href='noticeView.jsp'">
+                    <td>2021-06-04</td>
+                    <td class="article">대학생 설문조사 어플 UniQ 사용방법</td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!--하단바 코드-->
+    <div class="bar">
+        <div class="bar__container">
+            <a href="home.html" class="bar__home">
+                <img src="images/icon_home.png" alt="home icon" class="bar__home__icon">
+            </a>
+            <a href="myQuestion.html" class="bar__mysurvey">
+                <img src="images/icon_mysurvey.png" alt="mysurvey icon" class="bar__mysurvey__icon">
+            </a>
+            <a href="pointShop.html" class="bar__pointshop">
+                <img src="images/icon_pointshop.png" alt="pointshop icon" class="bar__pointshop__icon">
+            </a>
+            <a href="settings.html" class="settings">
+                <img src="images/icon_settings.png" alt="settings icon" class="bar__settings__icon">
+            </a>
+        </div>
+    </div>
+</body>
+</html>

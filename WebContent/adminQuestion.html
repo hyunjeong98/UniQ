@@ -1,0 +1,142 @@
+<!--<%@ page contentType="text/html" pageEncoding="utf-8" %>-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+	<title>설문 목록</title>
+	<link rel="stylesheet" href="style.css">  
+	<script src="https://kit.fontawesome.com/42105adea0.js" crossorigin="anonymous"></script>  
+</head>
+<body>
+
+	<div class="admin__title">
+        <h1>설문 관리</h1>
+        <hr class="lightLine">
+    </div>
+
+	<form action="" method="get" accept-charset="utf-8"></form>
+	<div class="surveylist__form">
+		
+			<table class="list_table">
+				<tr>
+					<td class="list_sort">
+						<select name="job">
+							<option value="time_asc">최신순</option>
+							<option value="time_desc">오래된순</option>
+							<option value="spell_asc">가나다순</option>
+							<option value="campus">교내</option>
+							<option value="nation">전국</option>
+						</select>
+					</td>
+					<td class="list_search">
+						<input type="text" placeholder="검색어를 입력해주세요.">
+						<button onclick=""><img src="images/search.png"></button>
+					</td>
+				</tr>
+			</table>
+	</div>
+	</form>
+
+	
+	<table class="list_edit">
+		<tr>
+			<td>
+				<input type="checkbox" id="checkAll">
+			</td>
+			<td class="bold" onclick="doDelete()">
+				삭제
+			</td>
+		</tr>
+	</table>
+		
+		<!--section은 slq의 데이터베이스 불러오기.-->
+		<!--
+		<section>
+			<c:forEach>
+				<table>
+					<tr>
+						<td>${설문 범위에 대한 DB}</td>
+						<td>
+							${}
+						</td>
+						<td>
+							${}
+						</td>
+					</tr>
+				</table>
+			</c:forEach>
+		</section>
+		-->
+
+		<table class="Questionlist">
+			<tr onclick="">
+				<td class="Questionlist__check"><input type="checkbox"></td>
+				<td class="Questionlist__target"><span>[전국]</span><input type="checkbox" name="target" value="db에서 가져오기"></td>
+				<td class="Questionlist__title">도서관 이용 관련 설문</td>
+				<td class="Questionlist__dday">D - 1</td>
+			</tr>
+			<tr onclick="">
+				<td class="Questionlist__check"><input type="checkbox"></td>
+				<td class="Questionlist__target"><span>[전국]</span><input type="checkbox" name="target" value="db에서 가져오기"></td>
+				<td class="Questionlist__title">도서관 이용 관련 설문</td>
+				<td class="Questionlist__dday">D - 1</td>
+			</tr>
+			
+		</table>
+
+		<div class="list_container">
+			<ul class="surveyList__list">
+				<li class="pre"><a href="#">이전</a></li>
+				<li class="active fo-black"><a href="#">1</a></li>
+				<li class="fo-black"><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#">6</a></li>
+				<li><a href="#">7</a></li>
+				<li><a href="#">8</a></li>
+				<li><a href="#">9</a></li>
+				<li><a href="#">10</a></li>
+				<li class="next red"><a href="#">다음</a></li>
+			</ul>
+		</div>
+		
+		<footer>
+			<div class="bar">
+			
+				<div class="bar__container">
+			
+					<a href="adminUser.html" class="bar__home">
+						<img src="images/icon_user.png" alt="home icon" class="bar__home__icon">
+					</a>
+					<a href="adminQuestion.html" class="bar__mysurvey">
+						<img src="images/icon_adminsurvey.png" alt="mysurvey icon" class="bar__mysurvey__icon">
+					</a>
+					<a href="adminPoint.html" class="bar__pointshop">
+						<img src="images/icon_adminpointshop.png" alt="pointshop icon" class="bar__pointshop__icon">
+					</a>
+					<a href="adminSetting.html" class="settings">
+						<img src="images/icon_settings.png" alt="settings icon" class="bar__settings__icon">
+					</a>
+				</div>
+			</div>
+		   </footer>
+	
+</body>
+</html>
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#checkAll').click(function(){
+			if($('#checkAll').prop("checked")){
+				$('input[type=checkbox]').prop("checked", true);
+			}
+			else{
+				$('input[type=checkbox]').prop("checked", false);
+			}
+		});
+	});
+</script>
