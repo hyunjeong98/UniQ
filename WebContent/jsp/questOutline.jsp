@@ -20,7 +20,7 @@
 	int tot = mChoice + sAnswer;
 	int leadTime = info.getLeatTime();
 	
-	
+	int jno = info.getQno();
 	String[] links = info.getFormlink().split("/");
 	String link = links[4] + "/" + links[5];
 	String pageurl = "https://www.docs.google.com/forms/" + link + "/viewform";
@@ -43,6 +43,7 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="../css/style.css"> 
 	<title>설문 정보</title>
+
 </head>
 <body>
 	<div class="outline__title">
@@ -86,20 +87,73 @@
 		</section>
 		<div class="empty"></div>
 	</div>
-	<div class="outline__buttons">
+	<div class="outline__buttons" id="outline__buttons">
 		<button class="outline__buttons__back" onclick="history.go(-1)">돌아가기</button>
-		<button class="outline__buttons__participate" onclick="go()">참여하기</button>
+		<button class="outline__buttons__participate" id="outline__buttons__participate">참여하기</button>
+		<button class="outline__buttons__participate ok" id="outline__buttons__participate ok">참여완료</button>
+		
 	</div>
 	
 </body>
 </html>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script>
+	<script>
+
+function openDialog(url, name, options, closeCallback) {
+
+    var win = window.open(url, name, options);
+
+    var interval = window.setInterval(function() {
+
+        try {
+
+            if (win == null || win.closed) {
+
+                window.clearInterval(interval);
+
+                closeCallback(win);
+
+            }
+
+        }
+
+        catch (e) {
+
+        }
+
+    }, 1000);
+
+    return win ;
+
+}
+
+var jno = "<%= jno %>";
+var pageurl = "<%= pageurl %>";
+var button = document.getElementById("outline__buttons__participate ok");
+
+function myfunc(){
+	window.location.href = "questOk.jsp?jno=" + jno;
+}
+
+
+var participate = document.getElementById("outline__buttons__participate");
+participate.addEventListener("click",function(){
+	openDialog(pageurl, "", "_blank", function(win) {
+		button.addEventListener("click", function(){
+			window.location.href = "questOk.jsp?jno=" + jno;
+		});
+	});
 	
-	function go(){
-		var pageurl = "<%= pageurl %>";
-		var win = window.open(pageurl, "", "_blank");
-	}
+});
+		
+	
+			
+			
+			
+
+
+	
+	
 
 </script>

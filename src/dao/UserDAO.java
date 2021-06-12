@@ -114,5 +114,24 @@ public class UserDAO {
 			if(conn!= null) conn.close();
 		}
 	}
+	
+	public boolean updatePoint(String uid, int point) throws NamingException, SQLException{
+		Connection conn= ConnectionPool.get();
+		PreparedStatement stmt= null;
+		try{
+			String sql= "UPDATE quser SET point=point+? WHERE id=?";
+			stmt= conn.prepareStatement(sql);
+			stmt.setInt(1, point);
+			stmt.setString(2, uid);
+			
+			
+			int count= stmt.executeUpdate();
+			return(count== 1) ? true: false;
+			
+		} finally{
+			if(stmt!= null) stmt.close();
+			if(conn!= null) conn.close();
+		}
+	}
 
 }

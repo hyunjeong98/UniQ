@@ -70,13 +70,13 @@ int ticket = user.getTicket();
         
         <div class="bar__container">
             
-            <a href="home.html" class="bar__home">
+            <a href="home.jsp" class="bar__home">
                 <img src="../images/icon_home.png" alt="home icon" class="bar__home__icon">
             </a>
-            <a href="myQuestion.html" class="bar__mysurvey">
+            <a href="myQuestion.jsp" class="bar__mysurvey">
                 <img src="../images/icon_mysurvey.png" alt="mysurvey icon" class="bar__mysurvey__icon">
             </a>
-            <a href="pointShop.html" class="bar__pointshop">
+            <a href="pointShop.jsp" class="bar__pointshop">
                 <img src="../images/icon_pointshop.png" alt="pointshop icon" class="bar__pointshop__icon">
             </a>
             <a href="settings.html" class="settings">

@@ -45,7 +45,7 @@ public class QuestDAO {
 		
 		ArrayList<QuestObj> quests = new ArrayList<QuestObj>();
 		while(rs.next()) {
-		quests.add(new QuestObj(rs.getString("title"), rs.getString("qexplain"), rs.getString("formlink"), rs.getInt("mchoice"), rs.getInt("sanswer"), rs.getString("deadline"), rs.getString("target"), rs.getInt("leadTime")));
+		quests.add(new QuestObj(rs.getInt("qno"), rs.getString("title"), rs.getString("qexplain"), rs.getString("formlink"), rs.getInt("mchoice"), rs.getInt("sanswer"), rs.getString("deadline"), rs.getString("target"), rs.getInt("leadTime")));
 		}
 		return quests;
 		} finally{
@@ -67,7 +67,7 @@ public class QuestDAO {
 		
 		ArrayList<QuestObj> quests = new ArrayList<QuestObj>();
 		while(rs.next()) {
-		quests.add(new QuestObj(rs.getString("title"), rs.getString("qexplain"), rs.getString("formlink"), rs.getInt("mchoice"), rs.getInt("sanswer"), rs.getString("deadline"), rs.getString("target"), rs.getInt("leadTime")));
+		quests.add(new QuestObj(rs.getInt("qno"), rs.getString("title"), rs.getString("qexplain"), rs.getString("formlink"), rs.getInt("mchoice"), rs.getInt("sanswer"), rs.getString("deadline"), rs.getString("target"), rs.getInt("leadTime")));
 		}
 		return quests;
 		} finally{
@@ -97,7 +97,7 @@ public class QuestDAO {
 			
 			QuestObj info = null;
 			if(rs.next()) {
-				info = new QuestObj(rs.getString("title"), rs.getString("qexplain"), rs.getString("formlink"), rs.getInt("mchoice"), rs.getInt("sanswer"), rs.getString("deadline"), rs.getString("target"), rs.getInt("leadTime"));
+				info = new QuestObj(rs.getInt("qno"), rs.getString("title"), rs.getString("qexplain"), rs.getString("formlink"), rs.getInt("mchoice"), rs.getInt("sanswer"), rs.getString("deadline"), rs.getString("target"), rs.getInt("leadTime"));
 			}
 			return info;
 			} finally{
@@ -105,6 +105,25 @@ public class QuestDAO {
 			if(stmt!= null) stmt.close();
 			if(conn!= null) conn.close();
 			}
+	}
+	
+	public boolean updateJoinquest(String uid, int jno) throws NamingException, SQLException {
+		Connection conn= ConnectionPool.get();
+		PreparedStatement stmt= null;
+		try{
+			String sql= "INSERT INTO joinquest(uid,jno) VALUES(?, ?)";
+			stmt= conn.prepareStatement(sql);
+			stmt.setString(1, uid);
+			stmt.setInt(2, jno);
+
+			int count= stmt.executeUpdate();
+			return(count== 1) ? true: false;
+			
+		} finally{
+			if(stmt!= null) stmt.close();
+			if(conn!= null) conn.close();
+		}
+		
 	}
 	
 }

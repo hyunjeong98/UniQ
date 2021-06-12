@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>설정</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="settings__title">
@@ -14,14 +14,16 @@
 
     <div class="settings__list">
         <!--개인정보 수정이랑 알림설정, 후원하기 빼도 되지 않을까....-->
-        <a href="notice.html" style="color: black"><p>공지사항</p></a>
+        <a href="jsp/noticeView.jsp" style="color: black"><p>공지사항</p></a>
         <hr class="lightLine">
+        <!--
         <a href="#"><p>개인정보 수정</p></a> 
         <hr class="lightLine">
         <a href="#"><p>알림 설정</p></a>
         <hr class="lightLine">
         <a href="#"><p>후원하기</p></a>
         <hr class="lightLine">
+        -->
         <a href="logout.jsp"><p>로그아웃</p></a>
         <hr class="lightLine">
         <a href="withdraw.html"><p>회원 탈퇴</p></a>
@@ -33,7 +35,7 @@
 <!--하단바 코드-->
 <div class="bar">
     <div class="bar__container">
-        <a href="home.html" class="bar__home">
+        <a href="jsp/home.jsp" class="bar__home">
             <img src="images/icon_home.png" alt="home icon" class="bar__home__icon">
         </a>
         <a href="myQuestion.html" class="bar__mysurvey">

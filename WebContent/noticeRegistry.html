@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>설정</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="outline__title">
@@ -13,14 +13,14 @@
         <span id="hide">&lt;</span>
 	</div>
     
-    <form action="" >
+    <form action="jsp/noticeRegistry.jsp" method="post">
         <div class="noticeRegister__container">
         <table class="noticeRegistry__form">
             <tr>
-                <td><input type="text" name="noticeTitle" placeholder="제목"></td>
+                <td><input type="text" name="atitle" placeholder="제목"></td>
             </tr>
             <tr>
-                <td><textarea name="noticeContent" placeholder="공지 내용을 입력하세요."></textarea></td>
+                <td><textarea name="content" placeholder="공지 내용을 입력하세요."></textarea></td>
             </tr>
             <tr>
                 <td style="text-align: center;"><input type="submit" value="등록하기"></td>
